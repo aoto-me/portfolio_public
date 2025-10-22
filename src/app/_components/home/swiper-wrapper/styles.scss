@@ -1,0 +1,731 @@
+.swiperWrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.swiper {
+  width: 100%;
+  height: auto;
+
+  @media (width <= $md) {
+    min-height: calc(100lvh - var(--logo-height, 54px));
+  }
+}
+
+.swiper-slide {
+  filter: brightness(0.5);
+  transition:
+    opacity 2s cubic-bezier(0.48, -0.08, 0.61, 1),
+    transform 2s cubic-bezier(0.48, -0.08, 0.61, 1);
+
+  &.swiper-slide-active {
+    filter: brightness(1);
+  }
+
+  &[aria-hidden='true'] {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: max(calc(var(--summary-height, 600px) + 120px), calc(100lvh - var(--logo-height, 54px)));
+    padding-bottom: 25px;
+
+    @media (width <= $md) {
+      flex-wrap: nowrap;
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+      min-height: calc(100lvh - var(--logo-height, 54px));
+      padding: calc(25px + 10%) 10vw 25px;
+    }
+  }
+}
+
+// -----------------------------------------------
+// リンク画像
+// -----------------------------------------------
+.swiper-slide {
+  a {
+    aspect-ratio: 1/1.618;
+    height: 75%;
+    max-height: clamp(calc(var(--summary-height, 600px)), calc(100lvh - var(--logo-height, 54px) - 25vh), 800px);
+    max-width: 65%;
+    border-radius: 999px;
+    position: relative;
+    pointer-events: none;
+
+    @media (width <= $md) {
+      flex-shrink: 1;
+      max-width: min(300px, 65%);
+      height: calc(100lvh - var(--logo-height, 54px) - var(--summary-height, 100%) - 150px);
+      min-height: 300px;
+    }
+  }
+
+  &.swiper-slide-active a {
+    pointer-events: all;
+  }
+
+  a svg {
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.75);
+    overflow: visible;
+
+    &.is_show {
+      transition: transform 1.5s ease-out;
+    }
+  }
+
+  &.swiper-slide-active a svg {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  a svg .stroke1 {
+    opacity: 0;
+  }
+
+  a .imageMask {
+    width: 100%;
+    height: 100%;
+    border-radius: 999px;
+    overflow: hidden;
+    transform: scale(1);
+
+    &.is_show {
+      transition: transform 1.5s ease-out;
+    }
+
+    &[data-slide='0'] {
+      background-color: #cfd0f2;
+    }
+
+    &[data-slide='1'] {
+      background-color: #cfcfcf;
+    }
+
+    &[data-slide='2'] {
+      background-color: #d0f2db;
+    }
+
+    &[data-slide='3'] {
+      background-color: #f1edcb;
+    }
+
+    &[data-slide='4'] {
+      background-color: #353535;
+    }
+
+    &[data-slide='5'] {
+      background-color: #cfeef2;
+    }
+
+    &[data-slide='6'] {
+      background-color: #e09238;
+    }
+  }
+
+  &.swiper-slide-active a .imageMask {
+    transform: scale(1);
+  }
+
+  &:not(.swiper-slide-active) a .imageMask {
+    transform: scale(0.75);
+  }
+
+  a .imageMask img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    object-position: center;
+    transition: transform ease 0.5s;
+  }
+}
+
+@keyframes animate-svg-stroke-1 {
+  0% {
+    stroke-width: 1px;
+    stroke-dashoffset: 100px;
+    stroke-dasharray: var(--rect-length, 1300px);
+    opacity: 1;
+  }
+
+  to {
+    stroke-dashoffset: calc(var(--rect-length, 1300px) * -1);
+    stroke-dasharray: var(--rect-length, 1300px);
+    opacity: 1;
+  }
+}
+
+@keyframes animate-svg-stroke-2 {
+  0% {
+    stroke-width: 1px;
+    stroke-dashoffset: var(--rect-length, 1300px);
+    stroke-dasharray: var(--rect-length, 1300px);
+  }
+
+  to {
+    stroke-dashoffset: 0px;
+    stroke-dasharray: var(--rect-length, 1300px);
+  }
+}
+
+@media (hover: hover) {
+  .swiper-slide a:hover svg .stroke1 {
+    animation: animate-svg-stroke-1 5.5s cubic-bezier(0.05, 0.27, 0, 1) 0.1s both;
+  }
+
+  .swiper-slide a:focus-visible svg .stroke1 {
+    animation: animate-svg-stroke-1 5.5s cubic-bezier(0.05, 0.27, 0, 1) 0.1s both;
+  }
+
+  .swiper-slide a:hover svg .stroke2 {
+    animation: animate-svg-stroke-2 5.5s cubic-bezier(0.17, 0.17, 0, 1) 0.1s both;
+  }
+
+  .swiper-slide a:focus-visible svg .stroke2 {
+    animation: animate-svg-stroke-2 5.5s cubic-bezier(0.17, 0.17, 0, 1) 0.1s both;
+  }
+
+  .swiper-slide a:hover .imageMask img {
+    transform: scale(1.1);
+  }
+
+  .swiper-slide a:focus-visible .imageMask img {
+    transform: scale(1.1);
+  }
+}
+
+// -----------------------------------------------
+// 概要
+// -----------------------------------------------
+.swiper-slide {
+  .summary {
+    --max-width: 530px;
+    width: calc(50% + (50% - var(--anchor-width, 0px)));
+    padding-left: 5rem;
+    padding-right: min(3vw, 2rem);
+    position: absolute;
+    top: 50%;
+    right: calc(50% + var(--anchor-width, 0px));
+    transform: translate(0, -50%);
+
+    @media (width <= $lg) {
+      width: calc(37.5% + (50% - var(--anchor-width, 0px)));
+      padding-left: 4rem;
+      padding-right: 1rem;
+    }
+
+    @media (width <= $md) {
+      width: 100%;
+      padding-top: 0.5rem;
+      padding-left: 1rem;
+      padding-bottom: 1.5rem;
+      padding-right: 0;
+      flex-shrink: 0;
+      position: static;
+      transform: translate(0, 0);
+    }
+
+    &__header {
+      margin: 0 auto;
+      max-width: var(--max-width);
+      padding-left: min(3vw, 1rem);
+      position: relative;
+
+      &::before {
+        content: '';
+        width: 1px;
+        height: 0;
+        background-color: #fff;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      &__title {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.35;
+
+        @media (width <= $lg) {
+          font-size: var(--font-30to24);
+        }
+
+        &__number {
+          margin-bottom: 1.5em;
+          display: block;
+          font-size: clamp(1.5rem, 5.5vw, 1.85rem);
+          font-family: var(--font-en);
+          font-weight: 400;
+          line-height: 1;
+
+          span {
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+          }
+        }
+      }
+
+      dl {
+        margin-top: 0.75em;
+        font-size: var(--font-17);
+        font-weight: 500;
+        line-height: 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+
+        @media (width <= $lg) {
+          font-size: 1rem;
+        }
+
+        div {
+          &:first-child dd::after {
+            margin-left: 0.5em;
+            content: '/';
+          }
+        }
+
+        dd {
+          display: inline-block;
+          line-height: 1;
+        }
+      }
+    }
+
+    &__list {
+      margin: 2rem auto 0;
+      max-width: var(--max-width);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      li {
+        font-size: var(--font-15to14);
+        line-height: 1;
+
+        span {
+          font-size: inherit;
+          line-height: inherit;
+          padding: 0.3em 0.5em 0.4em;
+          border-radius: 3px;
+          background-color: rgba(255, 255, 255, 0.25);
+        }
+      }
+    }
+
+    &__text {
+      margin: 1.75em auto 0;
+      max-width: var(--max-width);
+      font-family: var(--font-goth);
+      font-size: var(--font-15to14);
+      font-weight: 400;
+    }
+  }
+
+  &.swiper-slide-active .summary__header::before {
+    animation: animate-border-left-down 1s cubic-bezier(0.33, 1, 0.68, 1) 1.65s forwards;
+  }
+
+  &.swiper-slide-prev .summary__header::before {
+    animation: animate-border-left-up 0.5s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+  }
+}
+
+@keyframes animate-border-left-up {
+  0% {
+    height: 100%;
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+@keyframes animate-border-left-down {
+  0% {
+    height: 0;
+  }
+
+  to {
+    height: 100%;
+  }
+}
+
+// -----------------------------------------------
+// テキストアニメーション
+// -----------------------------------------------
+.textMask {
+  display: block;
+  overflow: hidden;
+
+  > span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(103%);
+    transition:
+      transform 1s cubic-bezier(0.33, 1, 0.68, 1) 1.5s,
+      opacity 1s ease-in 1.5s;
+  }
+
+  > dd {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(103%);
+    transition:
+      transform 1s cubic-bezier(0.33, 1, 0.68, 1) 1.5s,
+      opacity 1s ease-in 1.5s;
+  }
+
+  &.textMask--half > span {
+    transform: translateY(50%);
+  }
+}
+
+.swiper-slide {
+  &.swiper-slide-active .textMask > span {
+    opacity: 0;
+  }
+
+  &.swiper-slide-active .textMask > dd {
+    opacity: 0;
+  }
+
+  &:not(.swiper-slide-active) .textMask > span {
+    opacity: 0;
+  }
+
+  &:not(.swiper-slide-active) .textMask > dd {
+    opacity: 0;
+  }
+
+  &.swiper-slide-active .textMask > span {
+    animation: animate-text-show 1s cubic-bezier(0.33, 1, 0.68, 1) 1.85s forwards;
+  }
+
+  &.swiper-slide-active .textMask > dd {
+    animation: animate-text-show 1s cubic-bezier(0.33, 1, 0.68, 1) 1.85s forwards;
+  }
+
+  &.swiper-slide-active .textMask.textMask--half > span {
+    animation: animate-text-show-half 1s cubic-bezier(0.33, 1, 0.68, 1) 1.85s forwards;
+  }
+
+  &.swiper-slide-prev .textMask > span {
+    animation: animate-text-hidden 0.5s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+  }
+
+  &.swiper-slide-prev .textMask > dd {
+    animation: animate-text-hidden 0.5s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+  }
+}
+
+@keyframes animate-text-hidden {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-103%);
+    opacity: 0;
+  }
+}
+
+@keyframes animate-text-show {
+  0% {
+    opacity: 0;
+    transform: translateY(103%);
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes animate-text-show-half {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// -----------------------------------------------
+// ページネーション
+// -----------------------------------------------
+.swiper-pagination {
+  width: 30px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  left: min(1vw, 10px) !important;
+  top: 47% !important;
+  bottom: auto !important;
+  transform: translate3d(0, -50%, 0);
+}
+
+.swiper-pagination-bullet {
+  --pagination-size: 30px;
+  width: var(--pagination-size);
+  height: var(--pagination-size);
+  font-family: var(--font-en);
+  font-size: var(--font-15);
+  text-align: center;
+  line-height: 1.6;
+  color: #fff;
+  opacity: 1;
+  background: transparent;
+  border: solid 1px transparent;
+  position: relative;
+
+  @media (width <= $sm) {
+    --pagination-size: 28px;
+    font-size: var(--font-14);
+  }
+
+  svg {
+    width: var(--pagination-size);
+    height: var(--pagination-size);
+    position: absolute;
+    top: 51%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  svg circle {
+    stroke-dasharray: 90;
+    stroke-dashoffset: 90;
+    transition: stroke-dashoffset 0.5s ease-out;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+}
+
+.swiper-pagination-bullet-active svg circle {
+  stroke-dashoffset: 0;
+}
+
+@media (hover: hover) {
+  .swiper-pagination-bullet:hover svg circle {
+    stroke-dashoffset: 0;
+  }
+
+  .swiper-pagination-bullet:focus-visible svg circle {
+    stroke-dashoffset: 0;
+  }
+}
+
+// -----------------------------------------------
+// ボタン
+// -----------------------------------------------
+.nextButton {
+  --button-size: clamp(45px, 10vw, 85px);
+  position: absolute;
+  top: 50%;
+  left: 74%;
+  transform: translate(0, -50%);
+  z-index: 10;
+  border-radius: 999px;
+  cursor: pointer;
+
+  @media (width <= $lg) {
+    left: 76%;
+  }
+
+  @media (width <= $md) {
+    top: auto;
+    bottom: calc(var(--summary-height, 40%) + 5px);
+    left: auto;
+    right: min(30px, 4vw);
+  }
+
+  &__inner {
+    width: var(--button-size);
+    height: var(--button-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    img {
+      width: 45%;
+      height: auto;
+    }
+
+    svg {
+      width: var(--button-size);
+      height: var(--button-size);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      overflow: visible;
+    }
+
+    svg circle {
+      stroke-dasharray: 270;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 0.5s ease-out;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .nextButton__inner svg circle {
+    stroke-dashoffset: 270;
+  }
+
+  .nextButton:hover svg circle {
+    stroke-dashoffset: 0;
+  }
+
+  .nextButton:focus-visible svg circle {
+    stroke-dashoffset: 0;
+  }
+}
+
+// -----------------------------------------------
+// 円形運動
+// -----------------------------------------------
+.circular {
+  --slide-size: 2;
+  width: calc(100% / var(--slide-size));
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out 1s;
+
+  &.is_show {
+    opacity: 1;
+  }
+
+  @media (width <= $lg) {
+    --slide-size: 1.75;
+  }
+
+  @media (width <= $md) {
+    --slide-size: 1.15;
+  }
+
+  &__motion {
+    margin-top: var(--anchor-height, 0px);
+    height: 100%;
+    aspect-ratio: 1/1;
+    max-width: 100vw;
+    position: relative;
+
+    @media (width <= $md) {
+      height: calc(var(--anchor-height, 0px) + 25vh);
+      margin-top: calc(var(--anchor-height, 0px) - 6vh);
+    }
+
+    &__position {
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &__circle {
+      --circle-size: min(160px, calc(var(--anchor-width) / 1.5));
+      --circle-color: rgba(247, 217, 255, 0.8);
+
+      &[data-slide='0'] {
+        --circle-color: rgba(247, 217, 255, 0.8);
+      }
+
+      &[data-slide='1'] {
+        --circle-color: rgba(255, 255, 255, 0.85);
+      }
+
+      &[data-slide='2'] {
+        --circle-color: rgba(187, 255, 218, 0.8);
+      }
+
+      &[data-slide='3'] {
+        --circle-color: rgba(255, 248, 183, 0.85);
+      }
+
+      &[data-slide='4'] {
+        --circle-color: rgba(255, 185, 185, 0.8);
+      }
+
+      &[data-slide='5'] {
+        --circle-color: rgba(179, 244, 255, 0.8);
+      }
+
+      &[data-slide='6'] {
+        --circle-color: rgba(255, 209, 156, 0.85);
+      }
+
+      &.is_active::after {
+        animation: animate-motion-circle 2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+      }
+
+      @media (width <= $md) {
+        --circle-size: min(160px, calc(var(--anchor-width) / 1.25));
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        width: var(--circle-size);
+        aspect-ratio: 1/1;
+        transform: translate(-50%, -50%);
+        color: var(--circle-color, rgba(247, 217, 255, 0.8));
+        background: radial-gradient(
+          circle,
+          currentColor 0%,
+          rgba(255, 255, 255, 0.15) 50%,
+          rgba(204, 249, 255, 0) 70%,
+          rgba(204, 249, 255, 0) 100%
+        );
+        transition: color 2s ease-in;
+      }
+    }
+  }
+}
+
+@keyframes animate-motion-circle {
+  0% {
+    opacity: 1;
+  }
+
+  35% {
+    opacity: 0;
+  }
+
+  65% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,56 @@
+.bg {
+  width: 100vw;
+  height: 100lvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background-color: var(--bg-primary);
+
+  &__noise {
+    background-image: url(/img/noise.webp);
+    background-repeat: repeat;
+    background-size: 256px;
+    width: 100vw;
+    height: 100lvh;
+    transform: translateZ(0.01px);
+    position: fixed;
+    left: 0;
+    top: 0;
+    mix-blend-mode: overlay;
+    z-index: 1;
+
+    @supports not (background-image: url(/img/noise.webp)) {
+      background-image: url(/img/noise.jpg);
+    }
+  }
+
+  &__shadow {
+    width: 100vw;
+    position: fixed;
+    height: 100lvh;
+    transform: translateZ(0.01px);
+    left: 0;
+    top: 0;
+    z-index: 2;
+    background-color: transparent;
+    background-image:
+      radial-gradient(circle at 101% 101%, hsla(0, 0%, 0%, 0.6) 7.1662542444821735%, transparent 35.79438943123939%),
+      radial-gradient(circle at 1% 2%, hsla(120, 0%, 0%, 0.6) 4.34634974533107%, transparent 31.498187340831926%),
+      radial-gradient(circle at 47% -17%, hsla(0, 0%, 0%, 0.25) 7.240146612968912%, transparent 31.26908936344443%),
+      radial-gradient(circle at 113% -23%, hsla(0, 0%, 0%, 0.35) 7.240146612968912%, transparent 43.82257610638491%),
+      radial-gradient(circle at 40% 149%, hsla(0, 0%, 0%, 0.2) 7.240146612968912%, transparent 91.3466968387818%),
+      radial-gradient(circle at -98% 217%, hsla(0, 0%, 0%, 0.4) 3.5211267605633805%, transparent 64.47240312768677%);
+    background-blend-mode: multiply, multiply, multiply, multiply, multiply, multiply;
+  }
+}
+
+.canvas {
+  filter: saturate(0.7);
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+
+  &.is_load {
+    opacity: 1;
+  }
+}

@@ -3,13 +3,9 @@
 自主制作や受託制作の実績をまとめたポートフォリオサイトのコードです。
 ※このリポジトリはポートフォリオサイトための公開用で、実際のデータは含まれていません。
 
----
-
 ## 公開URL
 
-[https://portfolio.1coffee9milk.com/](https://portfolio.1coffee9milk.com/)
-
----
+[https://portfolio.1coffee9milk.com](https://portfolio.1coffee9milk.com)
 
 ## 使用技術
 
@@ -19,8 +15,6 @@
 - CMS: microCMS
 - Editor: Visual Studio Code
 - Design: Adobe XD, Adobe Illustrator, Adobe Dimension
-
----
 
 ## ライセンス
 

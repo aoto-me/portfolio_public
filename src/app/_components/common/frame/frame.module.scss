@@ -1,0 +1,43 @@
+.frame {
+  --nav-height: 350px;
+  --frame-position: min(3vw, 20px);
+  aspect-ratio: 1 / 1;
+  width: clamp(70px, calc(50vh - (var(--nav-height) / 2)), 250px);
+  height: auto;
+  background-image: url('/img/frame.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+
+  @media (width <= $lg) {
+    width: clamp(70px, calc(50vh - (var(--nav-height) / 2)), calc(25vw - (var(--logo-height, 54px) / 2)));
+  }
+
+  @media (width <= $md) {
+    width: min(250px, calc(28vw - (var(--logo-height, 54px) / 2)));
+  }
+
+  &--left-top {
+    top: var(--frame-position);
+    left: var(--frame-position);
+    transform: scale(-1, 1);
+  }
+
+  &--left-bottom {
+    bottom: var(--frame-position);
+    left: var(--frame-position);
+    transform: scale(-1, -1);
+  }
+
+  &--right-top {
+    top: var(--frame-position);
+    right: var(--frame-position);
+  }
+
+  &--right-bottom {
+    bottom: var(--frame-position);
+    right: var(--frame-position);
+    transform: scale(1, -1);
+  }
+}

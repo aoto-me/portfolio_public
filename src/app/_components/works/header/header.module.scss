@@ -1,0 +1,26 @@
+.header {
+  padding: min(1.7vw, 15px) 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  a {
+    display: block;
+    width: 30vw;
+    height: auto;
+    max-width: 200px;
+    line-height: 1;
+    position: relative;
+    z-index: 11;
+
+    img {
+      vertical-align: top;
+    }
+  }
+}

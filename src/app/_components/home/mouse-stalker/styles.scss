@@ -1,0 +1,50 @@
+.mouseStalker {
+  width: 0px;
+  height: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  transition: 0.4s ease-out;
+  backdrop-filter: blur(6px);
+  position: fixed;
+  top: -10px;
+  left: -10px;
+  z-index: 999;
+  transform: translate(0, 0);
+  overflow: hidden;
+  pointer-events: none;
+
+  span {
+    font-weight: 500;
+    font-size: var(--font-14);
+    color: var(--c-accent);
+    letter-spacing: 0.05em;
+    opacity: 0;
+
+    &::before {
+      content: 'View';
+    }
+  }
+
+  &.is_active {
+    top: -40px;
+    left: -40px;
+    width: 100px;
+    height: 100px;
+    transition: 0.4s ease-out;
+    background: rgba(255, 255, 255, 0.5);
+    border: solid 1px var(--c-accent);
+  }
+
+  &.is_active span {
+    opacity: 1;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .mouseStalker {
+    display: none !important;
+  }
+}

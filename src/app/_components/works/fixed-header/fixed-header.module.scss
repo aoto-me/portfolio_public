@@ -1,0 +1,60 @@
+.fixedHeader {
+  padding: min(2.5vw, 15px) 0;
+  width: calc(100% - 8vw);
+  max-width: 1200px;
+  background-color: var(--bg-secondary);
+  border-bottom: solid 1px rgba(192, 191, 191, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: -55px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 100;
+  opacity: 1;
+  transition: top 0.4s ease-out;
+
+  &::before {
+    content: '';
+    background-image: url(/img/noise.webp);
+    background-repeat: repeat;
+    mix-blend-mode: overlay;
+    background-size: 256px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 101;
+
+    @supports not (background-image: url(/img/noise.webp)) {
+      background-image: url(/img/noise.jpg);
+    }
+  }
+
+  &.is_show {
+    top: 0;
+  }
+
+  a {
+    width: 40vw;
+    max-width: 200px;
+    height: auto;
+    line-height: 1;
+    position: relative;
+    z-index: 102;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:focus-visible {
+      outline-color: #000;
+    }
+
+    img {
+      vertical-align: top;
+    }
+  }
+}

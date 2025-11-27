@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_1" data-name="レイヤー_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 81.46 32.07">
+  <!-- Generator: Adobe Illustrator 29.7.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 8)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+      }
+
+      .st1 {
+        clip-path: url(#clippath-1);
+      }
+
+      .st2 {
+        fill: #af9351;
+      }
+
+      .st3 {
+        clip-path: url(#clippath-2);
+      }
+
+      .st4 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="st0" x="25" width="32.07" height="32.07"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="st0" y="7" width="18.47" height="18.47"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="st0" x="63" y="7" width="18.46" height="18.47"/>
+    </clipPath>
+  </defs>
+  <g id="_グループ_116" data-name="グループ_116">
+    <g id="_グループ_113" data-name="グループ_113">
+      <g class="st4">
+        <g id="_グループ_111" data-name="グループ_111">
+          <path id="_パス_89" data-name="パス_89" class="st2" d="M41.03,32.07c0-10.69-5.34-16.03-16.03-16.03,10.69,0,16.03-5.34,16.03-16.03,0,10.69,5.34,16.03,16.03,16.03-10.69,0-16.03,5.34-16.03,16.03"/>
+        </g>
+      </g>
+    </g>
+    <g id="_グループ_114" data-name="グループ_114">
+      <g class="st1">
+        <g id="_グループ_111-2" data-name="グループ_111-2">
+          <path id="_パス_89-2" data-name="パス_89-2" class="st2" d="M9.23,25.47c0-6.15-3.08-9.23-9.23-9.23,6.16,0,9.23-3.08,9.23-9.23,0,6.16,3.08,9.23,9.23,9.23-6.16,0-9.23,3.08-9.23,9.23"/>
+        </g>
+      </g>
+    </g>
+    <g id="_グループ_115" data-name="グループ_115">
+      <g class="st3">
+        <g id="_グループ_111-3" data-name="グループ_111-3">
+          <path id="_パス_89-3" data-name="パス_89-3" class="st2" d="M72.23,25.47c0-6.15-3.08-9.23-9.23-9.23,6.16,0,9.23-3.08,9.23-9.23,0,6.16,3.08,9.23,9.23,9.23-6.16,0-9.23,3.08-9.23,9.23"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

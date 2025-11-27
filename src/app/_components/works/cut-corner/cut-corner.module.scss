@@ -1,0 +1,17 @@
+.cutCorner {
+  margin-top: clamp(3rem, 11vw, 4rem);
+  position: relative;
+  padding: min(8vw, 3.5rem) min(6vw, 2.5rem);
+
+  &__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
